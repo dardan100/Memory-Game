@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.potta-one-regular {
+  font-family: "Potta One", cursive;
+  font-weight: 800;
+  font-style: regular;
+}
+
+.flip-card {
+  perspective: 1000px;
+  position: relative;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-image: url("https://img.freepik.com/free-photo/galaxy-planets-digital-art_23-2151727684.jpg");
+}
+
+.flip-card-back {
+  background-image: url("https://images2.alphacoders.com/100/thumb-1920-1003880.png");
+  background-size: cover;
+  background-position: center;
+  transform: rotateY(180deg);
+}
+
+@media only screen and (max-width: 600px) {
+  .flip-card {
+    perspective: 1000px;
+    width: 150px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .flip-card {
+    perspective: 1000px;
+    width: 390px;
+    height: 210px;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .flip-card {
+    perspective: 1000px;
+    width: 600px;
+    height: 320px;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  .img {
+    height: 230px;
+  }
+}
