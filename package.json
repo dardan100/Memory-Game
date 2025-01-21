@@ -1,12 +1,12 @@
 {
   "name": "memorygame",
-  "private": false,
+  "private": true,
   "version": "0.0.0",
   "homepage": "https://dardan100.github.io/Memory-Game",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d build",
     "build": "vite build",
     "predeploy": "npm run build",
     "lint": "eslint .",
