@@ -2,14 +2,18 @@
   "name": "memorygame",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://dardan100.github.io/Memory-Game",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
+    "predeploy": "npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "deploy": "^1.0.3",
     "motion": "^11.18.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
