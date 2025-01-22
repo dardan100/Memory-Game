@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./App.css";
 import video from "./assets/images/db-bg.mp4";
 import StartGame from "./components/StartGame";
@@ -6,22 +6,47 @@ import { useMemoryGame } from "./context/ContextApi";
 import Loading from "./ui/Loading";
 import gif from "./assets/images/loadingGif.gif";
 import MainCard from "./components/MainCard";
-import Lose from "./ui/Lose";
 
 function App() {
-  const { status, cards, selectedCharacters } = useMemoryGame();
-  console.log(status);
+  const { status } = useMemoryGame();
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    // Ensure the video plays after user interaction
+    const handleAutoplay = () => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => {
+          console.log("Autoplay prevented. User interaction required.");
+        });
+      }
+    };
+
+    document.addEventListener("click", handleAutoplay);
+
+    return () => {
+      document.removeEventListener("click", handleAutoplay);
+    };
+  }, []);
 
   return (
     <>
-      <div className="">
+      <div className="relative w-full h-screen overflow-hidden">
         {/* Video Background */}
         <div className="w-full h-screen absolute inset-0 -z-10">
-          <video autoPlay muted loop className="w-screen h-screen object-cover">
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline // Ensures compatibility with mobile browsers
+            className="w-screen h-screen object-cover"
+          >
             <source src={video} type="video/mp4" />
+            Your browser does not support the video tag.
           </video>
         </div>
 
+        {/* Conditional Rendering */}
         {status === "loading" && <Loading gif={gif} />}
         {status === "ready" && <StartGame />}
         {status === "playing" && (
