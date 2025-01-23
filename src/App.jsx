@@ -15,7 +15,6 @@ function App() {
     <>
       <div className="relative w-full h-screen overflow-hidden">
         {/* Video Background */}
-
         <BgVideo />
         {/* Conditional Rendering */}
         {status === "loading" && <Loading gif={gif} />}

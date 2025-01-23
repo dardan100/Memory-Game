@@ -1,4 +1,5 @@
 import React from "react";
+import dbWIn from "../assets/images/db-win.gif";
 
 export default function Win({ restartGame }) {
   return (
@@ -7,8 +8,8 @@ export default function Win({ restartGame }) {
         You Won!!
       </p>
       <img
-        src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmg5bXRxbHN2MnBlNzc2MTdveXQzNHhpZTRxcG1xOWVoYThieDhxMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RWL5VzkBVf7n9uH1UZ/giphy.gif"
-        alt="Vegeta"
+        src={dbWIn}
+        alt="You Win"
         className="w-[800px] 2xl:w-[900px] rounded-lg shadow-2xl shadow-blue-700 bg-blue-400 p-4"
       />
       <button

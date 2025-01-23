@@ -1,4 +1,5 @@
 import React from "react";
+import dbLose from "../assets/images/db-lose.gif";
 
 export default function Lose({ restartGame }) {
   return (
@@ -7,8 +8,8 @@ export default function Lose({ restartGame }) {
         You Lose!
       </p>
       <img
-        src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWFwZHB6eGhhN2ZqM294enVna3MwbXg0MXhua2c1cWtmNjQ1azBmaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pNn4hlkovWAHfpLRRD/giphy.gif"
-        alt="Vegeta"
+        src={dbLose}
+        alt="You Lose"
         className="w-[800px] 2xl:w-[900px] rounded-lg shadow-2xl shadow-red-700 bg-red-400 p-4"
       />
       <button
