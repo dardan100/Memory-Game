@@ -104,7 +104,7 @@ function MemoryGameProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Wait for 5 seconds before making the API call
+        // Wait for 4 seconds before making the API call
         await new Promise((resolve) => setTimeout(resolve, 4000));
 
         const res = await fetch(BASE_URL);

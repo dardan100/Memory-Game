@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Loading from "../ui/Loading";
+import React, { useEffect } from "react";
 import db from "../assets/images/db-z.png";
-import gif from "../assets/images/loadingGif.gif";
 import { useMemoryGame } from "../context/ContextApi";
-import Info from "./Info";
 import Footer from "./Footer";
-
 export default function StartGame() {
   const { dispatch, level, filterCards } = useMemoryGame();
 

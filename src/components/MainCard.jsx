@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import HeaderCard from "../ui/HeaderCard";
 import Card from "./Card";
 import { useMemoryGame } from "../context/ContextApi";
-import Lose from "../ui/Lose";
+
 export default function MainCard() {
   const { movesLeft } = useMemoryGame();
   const [clickCount, setClickCount] = React.useState(0);
