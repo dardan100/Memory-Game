@@ -5,10 +5,8 @@ const MemoryGameContext = createContext();
 const initialState = {
   cards: [],
   filterCards: [],
-  score: 0,
   level: "", // easy, medium, hard
   status: "loading", // ready, playing, won, lost
-  highscore: 0,
   selectedCharacters: [],
   movesLeft: 0, // Number of moves for the game
 };
@@ -38,10 +36,9 @@ function reducer(state, action) {
       return {
         ...state,
         level: action.payload,
-        selectedCharacters: [], // Reset selection
-        score: 0,
-        status: "ready", // Ready to start
-        movesLeft: numMoves, // Set the number of moves left based on difficulty
+        selectedCharacters: [],
+
+        movesLeft: numMoves,
         filterCards: filteredCards,
       };
     }
@@ -72,7 +69,6 @@ function reducer(state, action) {
         ...state,
         filterCards: [],
         selectedCharacters: [],
-        score: 0,
         status: "ready",
         level: "",
         movesLeft: 0, // Reset movesLeft when restarting
@@ -88,13 +84,13 @@ function MemoryGameProvider({ children }) {
   const [
     {
       cards,
-      score,
       level,
+      shuffledCards,
       status,
-      highscore,
       filterCards,
       selectedCharacters,
       movesLeft,
+      filteredCards,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -127,14 +123,14 @@ function MemoryGameProvider({ children }) {
     <MemoryGameContext.Provider
       value={{
         cards,
-        score,
         level,
         status,
-        highscore,
         filterCards,
         selectedCharacters,
         movesLeft,
         dispatch,
+        shuffledCards,
+        filteredCards,
       }}
     >
       {children}

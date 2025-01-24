@@ -9,19 +9,18 @@ export default function MainCard() {
 
   return (
     <>
-      <div className="">
+      <div>
         <HeaderCard />
         <div>
-          <div className="">
+          <div>
             <Card clickCount={clickCount} setClickCount={setClickCount} />
           </div>
           <div>
             <div className=" mt-10  text-xl flex items-center justify-center">
               <p className="potta-one-regular  text-2xl">
-                {" "}
-                {clickCount} / {movesLeft}
+                {clickCount + 1} / {movesLeft}
               </p>
-            </div>{" "}
+            </div>
           </div>
         </div>
       </div>

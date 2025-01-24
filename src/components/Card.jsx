@@ -21,8 +21,6 @@ export default function Card({ clickCount, setClickCount }) {
   const [allFlipped, setAllFlipped] = useState(false); // State to track if all cards are flipped
   const [flipTimeout, setFlipTimeout] = useState(null); // State to track the flip timeout
 
-  // Match this with your CSS animation duration (1 second)
-
   const getCardCountByDifficulty = () => {
     switch (level) {
       case "hard":
@@ -52,30 +50,31 @@ export default function Card({ clickCount, setClickCount }) {
       return;
     }
 
-    // Flip all cards and play the sound
+    // Flip all cards
     setAllFlipped(true);
+
+    if (
+      clickCount + 1 === movesLeft &&
+      selectedCharacters.length + 1 === movesLeft
+    ) {
+      setWinGame(true);
+
+      return;
+    }
+
+    // Play the sound
     playSound();
 
     // Add the selected character
     dispatch({ type: "addSelectedCharacter", payload: card.name });
-    setClickCount((prev) => prev + 1); // Increment the click count
+
+    setClickCount((prev) => prev + 1);
 
     const cardCount = getCardCountByDifficulty();
 
-    // Check if it's the last click (game over logic)
-    if (clickCount + 1 === movesLeft) {
-      if (selectedCharacters.length + 1 === movesLeft) {
-        setWinGame(true);
-      }
-      return;
-    }
-
-    // Delay shuffle until the animation completes
-    clearTimeout(flipTimeout);
     setFlipTimeout(
       setTimeout(() => {
-        void document.body.offsetHeight;
-        setAllFlipped(false); // Flip back after animation
+        setAllFlipped(false);
         const shuffledCards = cards.sort(() => 0.5 - Math.random());
         const newFilterCards = shuffledCards.slice(0, cardCount);
         dispatch({ type: "updateCards", payload: newFilterCards });
